@@ -12,7 +12,7 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Autowired // 의존객체를 주입 받기 위한 어노테이션
 	private SqlSession session;
-	
+
 	@Override
 	public void insert(UsersDto dto){
 		// TODO Auto-generated method stub
@@ -39,8 +39,13 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public boolean canUseId(String id){
-		// TODO Auto-generated method stub
-		return false;
+		// 인자로 전달된 아이디를 DB 에서 select 해본다.
+		String selectedId = session.selectOne("users.isExistId", id);
+		if(selectedId == null){// 없으면
+			return true; // 사용가능한 아이디이다.
+		}else{
+			return false;
+		}
 	}
 
 }
