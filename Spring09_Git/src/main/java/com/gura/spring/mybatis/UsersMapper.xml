@@ -36,4 +36,9 @@
 		WHERE id = #{id}
 	</update>
 	
+	<delete id="delete" parameterType="string">
+		DELETE FROM users
+		WHERE id = #{id}
+	</delete>
+	
 </mapper>
