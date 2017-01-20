@@ -16,4 +16,6 @@ public interface UsersService{
 	public void delete(String id);
 
 	public Map<String, Object> canUseId(String id);
+
+	public ModelAndView getData(String id);
 }
