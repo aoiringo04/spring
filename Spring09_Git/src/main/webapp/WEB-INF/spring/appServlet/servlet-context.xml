@@ -31,6 +31,11 @@
 	<beans:bean class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg name="sqlSessionFactory" ref="sessionFactory" />
 	</beans:bean>
+
+	<!-- Multipart 폼 전송을 처리하기 위한 bean -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10240000" />
+	</beans:bean>
 	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
