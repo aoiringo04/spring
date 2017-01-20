@@ -30,4 +30,10 @@
 		WHERE id = #{id} AND pwd = #{pwd}
 	</select>
 	
+	<update id="update" parameterType="UsersDto">
+		UPDATE users
+		SET pwd = #{pwd} , email = #{email}
+		WHERE id = #{id}
+	</update>
+	
 </mapper>
