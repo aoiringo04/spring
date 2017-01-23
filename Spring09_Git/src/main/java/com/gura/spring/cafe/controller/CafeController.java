@@ -38,21 +38,21 @@ public class CafeController{
 		cafeService.insert(dto);
 		return "redirect:/cafe/list.do";
 	}
-	
+
 	@RequestMapping("/cafe/detail")
 	public ModelAndView detail(@RequestParam int num){
 		ModelAndView mView = cafeService.getData(num);
 		mView.setViewName("cafe/detail");
 		return mView;
 	}
-	
+
 	// 글 삭제 요청 처리
 	@RequestMapping("/cafe/private/delete")
 	public String delete(@RequestParam int num){
 		cafeService.delete(num);
 		return "redirect:/cafe/list.do";
 	}
-	
+
 	// 글 수정폼 요청 처리
 	@RequestMapping("/cafe/private/updateform")
 	public ModelAndView updateform(@RequestParam int num){
@@ -63,5 +63,11 @@ public class CafeController{
 		// 리턴해준다.
 		return mView;
 	}
-	
+
+	@RequestMapping("/cafe/private/update")
+	public String update(@ModelAttribute CafeDto dto){
+		cafeService.update(dto);
+		return "redirect:/cafe/list.do";
+	}
+
 }

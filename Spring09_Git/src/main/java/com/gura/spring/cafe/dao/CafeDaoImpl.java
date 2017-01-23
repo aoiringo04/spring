@@ -10,7 +10,7 @@ import com.gura.spring.cafe.dto.CafeDto;
 
 @Repository
 public class CafeDaoImpl implements CafeDao{
-	
+
 	@Autowired
 	private SqlSession session;
 
@@ -38,8 +38,7 @@ public class CafeDaoImpl implements CafeDao{
 
 	@Override
 	public void update(CafeDto dto){
-		// TODO Auto-generated method stub
-		
+		session.update("cafe.update", dto);
 	}
 
 	@Override
