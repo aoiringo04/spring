@@ -14,4 +14,6 @@ public interface CafeService{
 	public void update(CafeDto dto);
 
 	public void delete(int num);
+	
+	public ModelAndView updateForm(int num);
 }
