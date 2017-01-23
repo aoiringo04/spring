@@ -44,8 +44,7 @@ public class CafeDaoImpl implements CafeDao{
 
 	@Override
 	public void delete(int num){
-		// TODO Auto-generated method stub
-		
+		session.delete("cafe.delete", num);
 	}
 
 }
