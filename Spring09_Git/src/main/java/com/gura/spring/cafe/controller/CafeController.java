@@ -9,10 +9,10 @@ import com.gura.spring.cafe.service.CafeService;
 
 @Controller
 public class CafeController{
-	
+
 	@Autowired
 	private CafeService cafeService;
-	
+
 	@RequestMapping("/cafe/list")
 	public ModelAndView list(){
 		// 글 목록이 담겨 있는 ModelAndView 객체를 리턴 받는다.
@@ -22,5 +22,11 @@ public class CafeController{
 		// 리턴해준다.
 		return mView;
 	}
-	
+
+	// 새글 입력 폼 요청 처리
+	@RequestMapping("/cafe/private/insertform")
+	public String insertForm(){
+		return "cafe/private/insertform";
+	}
+
 }
