@@ -28,8 +28,7 @@ public class CafeServieImpl implements CafeService{
 
 	@Override
 	public void insert(CafeDto dto){
-		// TODO Auto-generated method stub
-		
+		cafeDao.insert(dto);
 	}
 
 	@Override
