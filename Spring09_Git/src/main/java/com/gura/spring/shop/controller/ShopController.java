@@ -46,4 +46,10 @@ public class ShopController{
 		return "redirect:/shop/index.do";
 	}
 	
+	// 상품 목록 보기 요청 처리
+	@RequestMapping("/shop/list")
+	public String list(){
+		return "shop/list";
+	}
+	
 }
