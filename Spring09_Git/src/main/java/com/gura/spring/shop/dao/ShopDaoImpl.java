@@ -25,20 +25,26 @@ public class ShopDaoImpl implements ShopDao{
 
 	@Override
 	public void withDraw(String id, int money){
-		// TODO Auto-generated method stub
-		
+		// 아이디와 금액을 Map 에 담는다.
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("money", money);
+		session.insert("shop.withDraw", param);
 	}
 
 	@Override
 	public void addPoint(String id, int point){
-		// TODO Auto-generated method stub
+		// 아이디와 금액을 Map 에 담는다.
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("point", point);
+		session.insert("shop.addPoint", param);
 		
 	}
 
 	@Override
 	public void deliveryRequest(){
-		// TODO Auto-generated method stub
-		
+		System.out.println("배송 요청을 했습니다.");
 	}
 
 }
