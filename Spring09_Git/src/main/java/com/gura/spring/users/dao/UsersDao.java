@@ -5,7 +5,7 @@ import com.gura.spring.users.dto.UsersDto;
 public interface UsersDao{
 	public void insert(UsersDto dto);
 
-	public boolean isValid(UsersDto dto);
+	public String getPassword(String id);
 
 	public void update(UsersDto dto);
 

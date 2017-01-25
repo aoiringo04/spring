@@ -15,11 +15,11 @@ import com.gura.spring.users.dto.UsersDto;
 // Component 스캔 시 bean 이 될수 있도록
 @Component
 public class UsersServiceImpl implements UsersService{
-	
-	private PasswordEncoder pEncoder = new BCryptPasswordEncoder();
+
+	private PasswordEncoder	pEncoder	= new BCryptPasswordEncoder();
 
 	@Autowired
-	private UsersDao usersDao;
+	private UsersDao		usersDao;
 
 	@Override
 	public void insert(UsersDto dto){
@@ -32,7 +32,16 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public boolean isValid(UsersDto dto){
-		return usersDao.isValid(dto);
+		// 아이디가 유효한지 여부
+		boolean isValid = false;
+		// 아이디에 해당하는 DB에 저장된 암호화된 비밀번호를 읽어온다.
+		String password = usersDao.getPassword(dto.getId());
+		if(password != null){// 아이디가 일단 존재하는 경우
+			// . matches(사용자가 입력한 비밀번호, DB 에 저장된 암호화 비밀번호)를
+			// 이용해서 비밀번호가 맞는지 여부를 boolean type 으로 리턴받기
+			isValid = pEncoder.matches(dto.getPwd(), password);
+		}
+		return isValid;
 	}
 
 	@Override
