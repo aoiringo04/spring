@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,12 +15,18 @@ import com.gura.spring.users.dto.UsersDto;
 // Component 스캔 시 bean 이 될수 있도록
 @Component
 public class UsersServiceImpl implements UsersService{
+	
+	private PasswordEncoder pEncoder = new BCryptPasswordEncoder();
 
 	@Autowired
 	private UsersDao usersDao;
 
 	@Override
 	public void insert(UsersDto dto){
+		// 암호화된 비밀번호를 얻어낸다.
+		String encodedPwd = pEncoder.encode(dto.getPwd());
+		// Dto 객체에 다시 넣어준다.
+		dto.setPwd(encodedPwd);
 		usersDao.insert(dto);
 	}
 
